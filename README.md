@@ -2,6 +2,10 @@
 
 A simple vanilla JavaScript boilerplate with Vite and GSAP.
 
+## Requirements
+
+- Node.js 20.19+ or 22.12+ (required for Vite 7.x)
+
 ## Quick Start
 
 ```bash
