@@ -1,0 +1,17 @@
+{
+  "name": "test_infinite-circular-carousel",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "vite": "^6.3.5"
+  }
+}
