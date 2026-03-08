@@ -1,0 +1,24 @@
+/**
+ * Hero component
+ */
+.c-hero {
+    align-items: center;
+    background-color: #0f766e;
+    color: #fff;
+    display: flex;
+    height: 100svh;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.c-hero .hero_media {
+    height: 100%;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}

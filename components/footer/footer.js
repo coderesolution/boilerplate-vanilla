@@ -1,0 +1,3 @@
+/**
+ * Footer component (optional behaviour)
+ */

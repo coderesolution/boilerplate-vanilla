@@ -4,19 +4,33 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Boilerplate (Vanilla)</title>
+	<!-- TODO: Add meta tags, favicon, open graph tags, etc. -->
+
+	<!-- Fonts -->
+	<link rel="preload" href="/fonts/HelveticaNowProDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Mono&display=swap" rel="stylesheet">
+
+	<!-- Styles -->
 	<link rel="stylesheet" href="/styles.css" />
 </head>
 <body>
+	<header class="c-header">
+		<p>R&D</p>
+		<p>Boilerplate (Vanilla)</p>
+		<p>Experiment</p>
+	</header>
+
 	<main>
-		<header class="header">
-			<p>R&D</p>
-			<p>Boilerplate (Vanilla)</p>
-			<p>Experiment</p>
-		</header>
-		
-		<section class="background">
-			<img class="background_image" src="/img-1.jpg" />
+		<section class="c-hero">
+			<img class="hero_media" src="/img-1.jpg" alt="" />
 		</section>
+		<section class="c-about" id="about">About</section>
+		<section class="c-projects" id="projects">Projects</section>
+		<section class="c-careers" id="careers">Careers</section>
+		<section class="c-contact" id="contact">Contact</section>
+		<footer class="c-footer">Footer</footer>
 	</main>
 
 	<script type="module" src="/script.js"></script>

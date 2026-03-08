@@ -1,0 +1,13 @@
+/**
+ * Careers component
+ */
+.c-careers {
+    align-items: center;
+    background-color: #c2410c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+}

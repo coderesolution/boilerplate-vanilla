@@ -1,0 +1,13 @@
+/**
+ * Projects component
+ */
+.c-projects {
+    align-items: center;
+    background-color: #5b21b6;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+}

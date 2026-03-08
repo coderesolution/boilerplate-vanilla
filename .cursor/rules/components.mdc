@@ -1,0 +1,56 @@
+---
+description: "Page sections and components: header, hero, about, projects, careers, contact, footer. Apply when adding, editing, or structuring section-level UI or component CSS/JS."
+globs: "**/components/**", "**/index.html", "**/styles.css", "**/script.js"
+alwaysApply: false
+---
+
+# Components (sections)
+
+This project treats **components** as page sections: header, hero, about, projects, careers, contact, footer. Each has its own folder under `components/` with a required CSS file and an optional JS file.
+
+## Structure
+
+```
+components/
+  header/
+    header.css      # required
+    header.js       # optional
+  hero/
+    hero.css
+    hero.js
+  about/
+    about.css
+    about.js
+  projects/
+    projects.css
+    projects.js
+  careers/
+    careers.css
+    careers.js
+  contact/
+    contact.css
+    contact.js
+  footer/
+    footer.css
+    footer.js
+```
+
+## Conventions
+
+- **One component = one folder** under `components/` with the component name (e.g. `header`, `hero`).
+- **CSS**: Every component has a `{name}.css` file. Styles are scoped to the component root class (see below). Add `@import "./components/{name}/{name}.css";` in `styles.css` in the "Components" section so CSS loads with the main stylesheet (avoids FOUC).
+- **JS**: Optional. If a component needs behaviour, use `{name}.js` in the same folder. Component JS is **auto-imported** in `script.js` via `import.meta.glob` (run in sorted order). If a component has no behaviour, the JS file can stay empty or be removed.
+- **Root class**: Each component uses a root class `.c-{name}` (e.g. `.c-header`, `.c-hero`, `.c-about`). Use BEM-style element classes inside: `.{name}_element` (e.g. `.hero_media`, `.footer_copyright`).
+- **HTML**: Sections in `index.html` use the root class and semantic elements: `<header class="c-header">`, `<section class="c-hero">`, `<section class="c-about">`, etc. Order matches the list above; use `id="about"`, `id="projects"`, etc. for anchor links.
+
+## Adding a new component
+
+1. Create `components/{name}/` with `{name}.css` and optionally `{name}.js`.
+2. In `styles.css`, add `@import "./components/{name}/{name}.css";` in the Components section (keeps CSS in first-paint bundle, no FOUC).
+3. In `index.html`, add the section in the right order with `class="c-{name}"` and `id="{name}"` if needed for anchors. (Component JS is auto-discovered; no change to `script.js`.)
+
+## What not to do
+
+- Don’t put component styles in `styles.css`; keep them in the component’s CSS file.
+- Don’t add new top-level sections without adding a matching component folder and wiring the CSS (and JS if needed).
+- Don’t use generic class names (e.g. `.title`) without the component prefix; use `.about_title` or similar so styles don’t leak.

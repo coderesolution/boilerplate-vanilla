@@ -1,0 +1,3 @@
+/**
+ * Careers component (optional behaviour)
+ */

@@ -1,0 +1,3 @@
+/**
+ * About component (optional behaviour)
+ */

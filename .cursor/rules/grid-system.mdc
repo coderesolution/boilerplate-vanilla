@@ -1,0 +1,58 @@
+---
+description: "Layout and grid: use the u-grid CSS utility for multi-column and responsive layouts. Apply when writing or editing HTML structure or CSS layout."
+globs: "**/*.html", "**/*.css"
+alwaysApply: false
+---
+
+# Grid system (`u-grid`)
+
+Prefer `u-grid` over ad-hoc flex/grid or custom layout code. Implementation lives in `styles.css`.
+
+## What it is
+
+- **Class**: `u-grid` on a container; direct children are grid items.
+- **Breakpoints**: sm (default 2 cols), md 769px (6 cols), lg 1025px (6 cols), xl 1281px (12 cols).
+- **Control**: CSS custom properties on the grid or on items for columns, gaps, and row spans.
+
+## When to use
+
+- Multi-column layouts (2, 3, 4+ columns).
+- Responsive layouts that change column count by breakpoint.
+- Auto-wrapping lists (cards, tiles) with consistent column spans.
+- Layouts needing different column vs row gaps or row spans.
+
+## How to use
+
+**Basic grid:**
+```html
+<div class="u-grid">
+  <div style="--md: 1/4; --xl: 1/7;">Left</div>
+  <div style="--md: 4/7; --xl: 7/13;">Right</div>
+</div>
+```
+
+**Column spans (line numbers):**
+- `--sm` / `--md` / `--lg`: 2 or 6 columns (e.g. 1–2, 1–4, 1–7 for 6-col).
+- `--xl`: 12 columns (e.g. 1–7, 7–13). Half = `--xl: 1/7` or `7/13`; third = `1/5`, `5/9`, `9/13`.
+
+**Auto-wrapping:** Set on the grid, e.g. `style="--span-xl: span 4;"`. Items share that span and wrap.
+- `span 4` = 1/3 width on xl; `span 6` = 1/2; `span 3` = 1/4 on 6-col (md/lg).
+
+**Gaps:** `--gap: 10px` (both); `--gap-col` / `--gap-row`; or `--gap-sm` … `--gap-xl`, `--gap-row`, `--gap-row-md`, etc.
+
+**Modifiers (with `u-grid`):**
+- `-pad`: responsive padding.
+- `-no-gap`: no column/row gap.
+- `-fixed`: use `--max-width` (e.g. `style="--max-width: 1200px;"`).
+
+**Row spans:** `--row-sm`, `--row-md`, `--row-lg`, `--row-xl` with line syntax (e.g. `1/2`, `2/3`).
+
+## What not to do
+
+- Don’t build one-off grid layouts with raw `display: grid` and custom breakpoints when `u-grid` fits.
+- Don’t use 12-col semantics for `--sm`/`--md`/`--lg`; 12 columns only at xl (1281px+).
+- Direct children only are grid items; wrap content in one child if needed.
+
+## Reference
+
+Full cascade and examples: see `styles.css` (grid section comments) or project README.

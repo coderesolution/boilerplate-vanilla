@@ -1,0 +1,3 @@
+/**
+ * Header component (optional behaviour)
+ */

@@ -1,0 +1,13 @@
+/**
+ * About component
+ */
+.c-about {
+    align-items: center;
+    background-color: #166534;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+}

@@ -1,58 +1,209 @@
 /**
- * FONTS
- */
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter+Mono:wght@400..700&display=swap");
-
-/**
- * RESET
+ * Imports must come first (reset, then components).
  */
 @import url("https://cdn.jsdelivr.net/npm/the-new-css-reset@1.11.3/css/reset.min.css");
+@import "./components/header/header.css";
+@import "./components/hero/hero.css";
+@import "./components/about/about.css";
+@import "./components/projects/projects.css";
+@import "./components/careers/careers.css";
+@import "./components/contact/contact.css";
+@import "./components/footer/footer.css";
+
+/**
+ * ROOT VARIABLES
+ * Add design tokens here: colors, spacing, breakpoints, etc.
+ * Font family fallbacks: systemfontstack.com
+ */
+:root {
+    --family--1:
+        "Helvetica Now Display", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
+        helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+    --family--2: "DM Mono", Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+
+/**
+ * FONTS
+ */
+@font-face {
+    font-family: "Helvetica Now Display";
+    src:
+        url("/fonts/HelveticaNowProDisplay-Regular.woff2") format("woff2"),
+        url("/fonts/HelveticaNowProDisplay-Regular.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+}
 
 /**
  * Layout
  */
+html,
 body {
-  background: #ffa5c1;
-  color: #fff;
-  overflow: hidden;
-  position: relative;
+    max-width: 100%;
+    min-height: 100vh;
+    overflow-x: clip;
+    width: 100%;
+}
+
+html {
+    /* Scroll behaviour */
+    scroll-behavior: initial;
+    min-height: 100%;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    overflow-y: scroll;
+
+    /* Reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            transition: none !important;
+        }
+    }
+}
+
+body {
+    background: #ffa5c1;
+    color: #fff;
+    font-family: var(--family--1);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1em;
+    overflow-x: clip;
+    position: relative;
+
+    /* Font smoothing */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Touch actions */
+    -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
 }
 
 /**
- * Code for the project...
+ * GRID SYSTEM
+ *
+ * Breakpoints:
+ * - sm (default)
+ * - md 769px (6 cols)
+ * - lg 1025px (6 cols)
+ * - xl 1281px (12 cols)
  */
-.header {
-  align-items: center;
-  display: grid;
-  font: 500 normal 2.2vw / normal "Inter", sans-serif;
-  grid-template-columns: 1fr auto 1fr;
-  left: 0;
-  letter-spacing: -0.03em;
-  padding: 25px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 1;
+.u-grid {
+    --col-sm: 2;
+    --col-md: 6;
+    --col-lg: 6;
+    --col-xl: 12;
+    /* Level 1: Default gap (applies to both col and row, all sizes) */
+    --gap: var(--grid-gap-sm, 12px);
+    /* Level 2: Default for col (all sizes) - falls back to --gap */
+    --gap-col: var(--gap);
+    /* Level 2: Default for row (all sizes) - falls back to --gap */
+    /* Note: --gap-row is only used if size-specific gaps aren't set */
+    --gap-row: var(--gap);
+    /* Level 3: Column gap by size (cascades: specific > --gap-col > --gap) */
+    --gap-sm: var(--gap-col);
+    --gap-md: var(--gap-col);
+    --gap-lg: var(--gap-col);
+    --gap-xl: var(--gap-col);
+    /* Level 3/4: Row gap by size (cascades: --gap-row-sm/md/lg/xl > --gap-row > --gap-sm/md/lg/xl > --gap-col > --gap) */
+    --row-gap-sm: var(--gap-row-sm, var(--gap-row, var(--gap-sm)));
+    --row-gap-md: var(--gap-row-md, var(--gap-row, var(--gap-md)));
+    --row-gap-lg: var(--gap-row-lg, var(--gap-row, var(--gap-lg)));
+    --row-gap-xl: var(--gap-row-xl, var(--gap-row, var(--gap-xl)));
+    --grid-pad: var(--container-padding, 20px);
+    --max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(var(--col-sm), 1fr);
+    column-gap: var(--gap-sm);
+    row-gap: var(--row-gap-sm);
+    margin: 0 auto;
+    max-width: var(--max-width);
 
-  p:last-child {
-    text-align: right;
-  }
+    @media (min-width: 769px) {
+        --gap-md: var(--gap-col-md, var(--gap-col, var(--grid-gap-md, 24px)));
+        column-gap: var(--gap-md);
+        grid-template-columns: repeat(var(--col-md), 1fr);
+        row-gap: var(--row-gap-md);
+    }
+
+    @media (min-width: 1025px) {
+        --gap-lg: var(--gap-col-lg, var(--gap-col, var(--grid-gap-lg, 48px)));
+        column-gap: var(--gap-lg);
+        grid-template-columns: repeat(var(--col-lg), 1fr);
+        row-gap: var(--row-gap-lg);
+    }
+
+    @media (min-width: 1281px) {
+        --gap-xl: var(--gap-col-xl, var(--gap-col, var(--grid-gap-lg, 48px)));
+        column-gap: var(--gap-xl);
+        grid-template-columns: repeat(var(--col-xl), 1fr);
+        row-gap: var(--row-gap-xl);
+    }
+
+    > * {
+        --item-sm: var(--span-sm, 1/-1);
+        --item-md: var(--span-md, 1/-1);
+        --item-lg: var(--span-lg, 1/-1);
+        --item-xl: var(--span-xl, 1/-1);
+        grid-column: var(--sm, var(--item-sm));
+        grid-row: var(--row-sm, auto);
+
+        @media (min-width: 769px) {
+            grid-column: var(--md, var(--item-md));
+            grid-row: var(--row-md, auto);
+        }
+
+        @media (min-width: 1025px) {
+            grid-column: var(--lg, var(--item-lg));
+            grid-row: var(--row-lg, auto);
+        }
+
+        @media (min-width: 1281px) {
+            grid-column: var(--xl, var(--item-xl));
+            grid-row: var(--row-xl, auto);
+        }
+    }
 }
 
-.background {
-  height: 100svh;
-  width: 100svw;
-  overflow: hidden;
-  position: relative;
-
-  .background_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+/**
+ * Fixed max-width
+ */
+.u-grid.-fixed {
+    max-width: var(--max-width);
 }
+
+/**
+ * Padding
+ */
+.u-grid.-pad {
+    padding-inline: calc(var(--gap-sm) * 2);
+
+    @media (min-width: 769px) {
+        padding-inline: var(--gap-md);
+    }
+
+    @media (min-width: 1025px) {
+        padding-inline: var(--grid-pad);
+    }
+
+    @media (min-width: 1281px) {
+        padding-inline: var(--grid-pad);
+    }
+}
+
+/**
+ * No gap
+ */
+.u-grid.-no-gap {
+    column-gap: 0;
+    row-gap: 0;
+}
+
+/**
+ * Components (sections)
+ */

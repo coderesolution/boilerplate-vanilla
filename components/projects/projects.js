@@ -1,0 +1,3 @@
+/**
+ * Projects component (optional behaviour)
+ */

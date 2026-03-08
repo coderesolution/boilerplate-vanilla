@@ -1,0 +1,13 @@
+/**
+ * Footer component
+ */
+.c-footer {
+    align-items: center;
+    background-color: #1e293b;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+    text-align: center;
+}

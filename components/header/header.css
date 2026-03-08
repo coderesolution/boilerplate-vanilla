@@ -1,0 +1,22 @@
+/**
+ * Header component
+ */
+.c-header {
+  align-items: center;
+  background-color: #1e3a8a;
+  color: #fff;
+  display: grid;
+  font: 500 normal 2.2vw / normal "Inter", sans-serif;
+  grid-template-columns: 1fr auto 1fr;
+  left: 0;
+  letter-spacing: -0.03em;
+  padding: 25px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.c-header p:last-child {
+  text-align: right;
+}
